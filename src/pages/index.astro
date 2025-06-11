@@ -1,16 +1,33 @@
 ---
-
+import Experience from '../components/experience.astro';
+import HelperMenu from '../components/helper-menu.astro';
+import Hero from '../components/hero.astro';
+import '../styles/reset.css';
+import '../styles/fonts.css';
+import Experience2 from '../components/experience2.astro';
+import Education from '../components/education.astro';
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik+Glitch&family=Syne+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fran Vento</title>
+  </head>
+  <body>
+    <Hero />
+    <HelperMenu />
+    <Experience />
+
+    <!-- <Experience2 /> -->
+    <Education />
+  </body>
 </html>

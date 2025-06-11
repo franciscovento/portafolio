@@ -1,0 +1,197 @@
+---
+export interface ExperienceCardProps {
+  company: string;
+  companyLink: string;
+  companyLogo: string;
+  dates: string;
+  position: string;
+  type: ExperienceCardType;
+  seniority: ExperienceCardSeniority;
+  items: string[];
+  technologies: string[];
+  color?: string;
+}
+
+export type ExperienceCardType = 'full-time' | 'part-time' | 'freelance';
+export type ExperienceCardSeniority = 'intern' | 'junior' | 'semi senior' | 'senior';
+
+interface Props extends ExperienceCardProps {}
+
+const {
+  company,
+  companyLink,
+  companyLogo,
+  dates,
+  position,
+  type,
+  seniority,
+  items,
+  technologies,
+  color,
+} = Astro.props;
+---
+
+<article class="experience-card" data-color={color}>
+  <div class="experience-card__header">
+    <img src={companyLogo} alt={company} width="50" height="auto" />
+    <a href={companyLink} target="_blank" rel="noopener noreferrer">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 13V19C18 19.5304 17.7893 20.0391 17.4142 20.4142C17.0391 20.7893 16.5304 21 16 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V8C3 7.46957 3.21071 6.96086 3.58579 6.58579C3.96086 6.21071 4.46957 6 5 6H11"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+        <path
+          d="M15 3H21V9"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+        <path
+          d="M10 14L21 3"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+    </a>
+  </div>
+  <div class="experience-card__details">
+    <div class="experience-card__details__header">
+      <h3 class="experience-card__details__header__title">{company}</h3>
+      <span class="experience-card__details__header__dates">{dates}</span>
+    </div>
+    <h4 class="experience-card__details__title">{position}</h4>
+    <div class="experience-card__details__tags">
+      <span>{type}</span>
+      <span>{seniority}</span>
+    </div>
+  </div>
+  <div class="experience-card__content">
+    {items?.map((item) => <p>- {item}</p>)}
+  </div>
+  <div class="experience-card__technologies">
+    <h5>Technologies</h5>
+    <div class="experience-card__technologies__list">
+      {technologies?.map((technology) => <span>{technology}</span>)}
+    </div>
+  </div>
+</article>
+
+<style>
+  .experience-card {
+    font-family: 'JetBrains Mono', monospace;
+    width: 400px;
+    background-color: white;
+    border: 1px solid #000;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: all 0.3s ease;
+    .experience-card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+      }
+      a {
+        display: flex;
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+    .experience-card__details {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      .experience-card__details__header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        .experience-card__details__header__title {
+          text-transform: uppercase;
+          font-size: 14px;
+        }
+        .experience-card__details__header__dates {
+          font-size: 14px;
+          color: #666;
+        }
+      }
+      .experience-card__details__tags {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        text-transform: capitalize;
+
+        color: white;
+        span {
+          background-color: #000;
+          padding: 4px 8px;
+          font-size: 12px;
+        }
+      }
+    }
+
+    .experience-card__content {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      p {
+        font-size: 12px;
+      }
+    }
+
+    .experience-card__technologies {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      h5 {
+        font-size: 14px;
+      }
+      .experience-card__technologies__list {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        span {
+          font-size: 10px;
+
+          border: 1px solid #000;
+          padding: 4px 8px;
+        }
+      }
+    }
+
+    /* &:hover {
+      background-color: red;
+      color: white;
+      .experience-card__details__header {
+        .experience-card__details__header__title {
+        }
+        .experience-card__details__header__dates {
+          color: white;
+        }
+      }
+      .experience-card__technologies {
+        .experience-card__technologies__list {
+          span {
+            border: 1px solid white;
+          }
+        }
+      }
+    } */
+  }
+</style>

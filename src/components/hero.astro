@@ -1,0 +1,270 @@
+---
+
+---
+
+<section class="hero">
+  <div class="hero__content app-wrapper">
+    <div class="hero__header">
+      <div class="hero__title">
+        <div class="hero__title--first name">Francisco</div>
+        <div class="hero__title--last">
+          <div class="hero__title--lastName name">Vento</div>
+          <div class="hero__title--last-tag">Full Stack Developer.</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero__info">
+      <div class="hero__link">
+        <div class="hero__link-url">
+          <span>See projects</span>
+          <div class="hero__link-url--border"></div>
+        </div>
+      </div>
+      <div class="hero__linkedin">
+        <div class="hero__linkedin-bg"></div>
+        <span class="hero__linkedin-text">Linkedin</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    color: white;
+    background-color: #212121;
+
+    /* background-image: url('/assets/hero-background.jpg'); */
+    /* background-size: fill;
+    background-position: center;
+    background-repeat: repeat; */
+    padding: 100px 20px;
+
+    position: relative;
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 80px;
+      .hero__header {
+        .hero__title {
+          text-transform: uppercase;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 100px;
+          font-size: clamp(6.25rem, 3.0921rem + 12.6316vw, 13.75rem);
+          line-height: 1;
+          .hero__title--last {
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            line-height: 0.6;
+            .hero__title--last-tag {
+              font-size: 18px;
+              /* width: 150px; */
+              text-align: center;
+              font-weight: 400;
+              text-transform: uppercase;
+              line-height: 0.6;
+            }
+          }
+        }
+      }
+
+      .hero__info {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        .hero__link {
+          display: flex;
+          flex-direction: column;
+          gap: 100px;
+
+          .hero__link-url {
+            font-weight: 400;
+            font-size: 18px;
+            text-transform: uppercase;
+            font-family: 'Bebas Neue', sans-serif;
+
+            .hero__link-url--border {
+              width: 100%;
+              height: 1px;
+              background-color: white;
+              opacity: 0;
+              transition: all 0.2s ease-in;
+              transform: translateY(10px);
+            }
+          }
+          .hero__link-url:hover {
+            .hero__link-url--border {
+              opacity: 1;
+              transform: translateY(0px);
+            }
+          }
+        }
+
+        .hero__linkedin {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 40px;
+          background-color: white;
+          color: black;
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          position: relative;
+
+          .hero__linkedin-bg {
+            position: absolute;
+
+            border-radius: 50%;
+
+            z-index: -1;
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 769px) {
+    .hero {
+      padding: 100px;
+
+      .hero__content {
+        .hero__header {
+          .hero__title {
+            font-size: 220px;
+            font-size: clamp(6.25rem, 3.0921rem + 12.6316vw, 13.75rem);
+            word-break: keep-all;
+            .hero__title--first {
+              height: 260px;
+            }
+            .hero__title--last {
+              height: 100px;
+              .hero__title--last-tag {
+                font-size: 30px;
+                /* width: 400px; */
+              }
+            }
+          }
+        }
+        .hero__info {
+          .hero__link {
+            .hero__link-url {
+              font-size: 30px;
+            }
+          }
+          .hero__linkedin {
+            font-size: 60px;
+            width: 200px;
+            height: 200px;
+          }
+        }
+      }
+    }
+  }
+</style>
+<script>
+  import gsap from 'gsap';
+  import SplitType from 'split-type';
+
+  const name = new SplitType('.name', { types: 'chars' });
+  const tl = gsap.timeline();
+  const linkedinButton = document.querySelector('.hero__linkedin');
+
+  const linkedinHover = gsap.fromTo(
+    '.hero__linkedin-bg',
+    {
+      width: '0%',
+      height: '0%',
+      opacity: 0,
+      backgroundColor: '#212121',
+    },
+    {
+      width: '100%',
+      height: '100%',
+      opacity: 1,
+      duration: 0.3,
+      ease: 'power2.out',
+      border: '1px solid white',
+      paused: true,
+    }
+  );
+  linkedinButton?.addEventListener('mouseenter', () => {
+    linkedinHover.play();
+    gsap.to('.hero__linkedin-text', {
+      color: 'white',
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  });
+
+  linkedinButton?.addEventListener('mouseleave', () => {
+    linkedinHover.reverse();
+    gsap.to('.hero__linkedin-text', {
+      color: '#212121',
+
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  });
+
+  const initAnimation = () => {
+    tl.from(name.chars, {
+      fontFamily: 'Rubik Glitch',
+      ease: 'power2.out',
+      duration: 0.5,
+      stagger: 0.05,
+      opacity: 0,
+      onComplete: () => {
+        registerListener();
+      },
+    });
+
+    tl.from('.hero__linkedin', {
+      y: 100,
+      opacity: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+    });
+
+    tl.from('.hero__title--last-tag', {
+      x: 100,
+      opacity: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+      delay: -0.3,
+    });
+
+    tl.from('.hero__link-url', {
+      y: 100,
+      opacity: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+      delay: -0.3,
+    });
+  };
+  const registerListener = () => {
+    name.chars?.forEach((char) => {
+      const animation = gsap.to(char, {
+        paused: true,
+        duration: 0.5,
+        ease: 'power2.out',
+        fontFamily: 'Rubik Glitch',
+      });
+      char.addEventListener('mouseenter', () => {
+        animation.play();
+      });
+      char.addEventListener('mouseleave', () => {
+        animation.reverse();
+      });
+    });
+  };
+
+  initAnimation();
+</script>

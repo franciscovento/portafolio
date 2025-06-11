@@ -1,0 +1,192 @@
+---
+const items = [
+  {
+    title: 'Projects',
+    description: 'My recent projects',
+    link: '#',
+  },
+  {
+    title: 'Experience',
+    description: 'Check my last experience',
+    link: '#',
+  },
+  {
+    title: 'Education',
+    description: 'Where I studied, what I learned',
+    link: '#',
+  },
+  {
+    title: 'Skills',
+    description: 'What I can do',
+    link: '#',
+  },
+  {
+    title: 'Contact me',
+    description: 'Get in touch with me',
+    link: '#',
+  },
+];
+---
+
+<section class="helper-menu">
+  <div class="app-wrapper">
+    {
+      items.map((item, index) => {
+        return (
+          <div class:list={['helper-menu__item']}>
+            <h2 class="helper-menu__title">{item.title}</h2>
+
+            <a href="#" class="helper-menu__link">
+              <div>0{index + 1}.</div>
+              <div>{item.description}</div>
+            </a>
+          </div>
+        );
+      })
+    }
+  </div>
+</section>
+<style>
+  .helper-menu {
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    .helper-menu__item {
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+      flex-direction: column;
+
+      .helper-menu__title {
+        font-size: 90px;
+        font-family: 'Bebas Neue', sans-serif;
+      }
+
+      .helper-menu__link {
+        /* background-color: white; */
+        border: 1px solid #212121;
+        height: 80px;
+
+        padding: 20px;
+        width: 400px;
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 0%;
+          background-color: #212121;
+          transition: all 0.3s ease-in-out;
+          z-index: -1;
+        }
+
+        &:hover {
+          /* background-color: #212121; */
+          &::after {
+            height: 100%;
+          }
+          color: white;
+          transition: all 0.3s ease-in-out;
+        }
+      }
+
+      &:nth-child(even) {
+        flex-direction: column;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .helper-menu {
+      .helper-menu__item {
+        flex-direction: row;
+        gap: 40px;
+
+        &:nth-child(even) {
+          flex-direction: row-reverse;
+        }
+        &:nth-child(1) {
+          gap: 60px;
+          .helper-menu__link {
+            width: 700px;
+          }
+        }
+        &:nth-child(2) {
+          gap: 180px;
+          .helper-menu__link {
+            width: 600px;
+          }
+        }
+        &:nth-child(3) {
+          margin-left: 100px;
+          gap: 80px;
+          .helper-menu__link {
+            width: 600px;
+          }
+        }
+        &:nth-child(4) {
+          margin-right: 200px;
+          gap: 180px;
+          .helper-menu__link {
+            width: 100%;
+          }
+        }
+        &:nth-child(5) {
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+</style>
+<script>
+  import gsap from 'gsap';
+  import SplitType from 'split-type';
+
+  const links = document.querySelectorAll('.helper-menu__link');
+
+  links.forEach((link) => {
+    // Split the text content
+    const textElement = link.querySelector('div:nth-child(2)') as HTMLElement;
+    if (!textElement) return;
+
+    const split = new SplitType(textElement, { types: 'chars' });
+    const chars = split.chars;
+
+    // Create hover animations
+    link.addEventListener('mouseenter', () => {
+      gsap.fromTo(
+        chars,
+        {
+          y: 10,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          color: 'white',
+          duration: 0.4,
+          stagger: 0.02,
+          ease: 'power2.out',
+        }
+      );
+    });
+
+    link.addEventListener('mouseleave', () => {
+      gsap.to(chars, {
+        y: 0,
+        opacity: 1,
+        color: '#212121',
+        duration: 0.4,
+        stagger: 0.02,
+        ease: 'power2.out',
+      });
+    });
+  });
+</script>
