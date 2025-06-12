@@ -59,7 +59,7 @@ const projects: CardProjectProps[] = [
     title: 'Recoco',
     role: 'Full Stack Developer',
     description:
-      'Platform created for students of the University of Buenos Aires. It allows users to rate university courses, leave comments, like other users’ feedback, and create new subjects or courses.',
+      'Platform created for students of the University of Buenos Aires. It allows users to rate university courses, leave comments, like other users feedback, and create new subjects or courses.',
     technologies: ['Supabase', 'NestJs', 'Node', 'TypeScript', 'Tailwind CSS', 'Next JS'],
     image: '/assets/company-logos/recoco.svg',
     link: 'https://recoco.netlify.app/',
@@ -104,20 +104,92 @@ const projects: CardProjectProps[] = [
 ---
 
 <section class="projects">
-  <div class="app-wrapper">
-    <div class="projects__cards">
-      {projects.map((project) => <ProjectCard {...project} />)}
+  <div>
+    <div class="projects__carousel">
+      <div class="projects__track">
+        {projects.map((project) => <ProjectCard {...project} />)}
+        {projects.map((project) => <ProjectCard {...project} />)}
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  import { gsap } from 'gsap';
+
+  function initCarousel() {
+    console.log('Initializing carousel...');
+    const track = document.querySelector('.projects__track');
+    const cards = document.querySelectorAll('.project-card');
+
+    console.log('Track element:', track);
+    console.log('Number of cards:', cards.length);
+
+    if (!track || !cards.length) {
+      console.log('Track or cards not found, retrying in 100ms...');
+      setTimeout(initCarousel, 100);
+      return;
+    }
+
+    // Calculate total width of all cards
+    const totalWidth = Array.from(cards).reduce((acc, card) => {
+      const width = card.getBoundingClientRect().width;
+      console.log('Card width:', width);
+      return acc + width + 20; // 20px for gap
+    }, 0);
+
+    console.log('Total width:', totalWidth);
+
+    // Set initial position
+    gsap.set(track, { x: 0 });
+
+    // Create the infinite scroll animation
+    const animation = gsap.to(track, {
+      x: -totalWidth / 2,
+      duration: 20,
+      ease: 'none',
+      repeat: -1,
+      onStart: () => console.log('Animation started'),
+      onComplete: () => console.log('Animation completed'),
+    });
+
+    // Pause on hover
+    // track.addEventListener('mouseenter', () => {
+    //   console.log('Pausing animation');
+    //   animation.pause();
+    // });
+
+    // track.addEventListener('mouseleave', () => {
+    //   console.log('Resuming animation');
+    //   animation.play();
+    // });
+  }
+
+  // Try to initialize multiple times to ensure it works
+  initCarousel();
+  document.addEventListener('DOMContentLoaded', initCarousel);
+  window.addEventListener('load', initCarousel);
+</script>
+
 <style>
   .projects {
     padding: 100px 40px;
+    overflow: hidden;
+  }
 
-    .projects__cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 20px;
-    }
+  .projects__carousel {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .projects__track {
+    display: flex;
+    gap: 20px;
+    width: fit-content;
+    will-change: transform;
+  }
+
+  .project-card {
+    flex-shrink: 0;
   }
 </style>
