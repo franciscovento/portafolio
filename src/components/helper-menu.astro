@@ -1,29 +1,24 @@
 ---
 const items = [
   {
-    title: 'Projects',
-    description: 'My recent projects',
-    link: '#',
+    title: 'Phone',
+    description: '+54 9 11 26238672',
+    link: 'tel:+5491126238672',
   },
   {
-    title: 'Experience',
-    description: 'Check my last experience',
-    link: '#',
+    title: 'Email',
+    description: 'francisco.vento.rivera@gmail.com',
+    link: 'mailto:francisco.vento.rivera@gmail.com',
   },
   {
-    title: 'Education',
-    description: 'Where I studied, what I learned',
-    link: '#',
+    title: 'Linkedin',
+    description: 'linkedin.com/in/francisco-vento/',
+    link: 'https://www.linkedin.com/in/francisco-vento/',
   },
   {
-    title: 'Skills',
-    description: 'What I can do',
-    link: '#',
-  },
-  {
-    title: 'Contact me',
-    description: 'Get in touch with me',
-    link: '#',
+    title: 'Github',
+    description: 'github.com/franciscovento',
+    link: 'https://github.com/franciscovento/',
   },
 ];
 ---
@@ -31,13 +26,12 @@ const items = [
 <section class="helper-menu">
   <div class="app-wrapper">
     {
-      items.map((item, index) => {
+      items.map((item) => {
         return (
           <div class:list={['helper-menu__item']}>
             <h2 class="helper-menu__title">{item.title}</h2>
 
             <a href="#" class="helper-menu__link">
-              <div>0{index + 1}.</div>
               <div>{item.description}</div>
             </a>
           </div>
@@ -50,7 +44,6 @@ const items = [
   .helper-menu {
     padding-top: 80px;
     padding-bottom: 80px;
-
     .helper-menu__item {
       display: flex;
       align-items: center;
@@ -67,7 +60,7 @@ const items = [
         /* background-color: white; */
         border: 1px solid #212121;
         height: 80px;
-
+        font-size: 24px;
         padding: 20px;
         width: 400px;
         max-width: 100%;
@@ -109,11 +102,18 @@ const items = [
       .helper-menu__item {
         flex-direction: row;
         gap: 40px;
+        max-width: 900px;
+        margin: 0 auto;
+
+        .helper-menu__link {
+          font-size: 36px;
+          flex: 1;
+        }
 
         &:nth-child(even) {
           flex-direction: row-reverse;
         }
-        &:nth-child(1) {
+        /* &:nth-child(1) {
           gap: 60px;
           .helper-menu__link {
             width: 700px;
@@ -141,7 +141,7 @@ const items = [
         }
         &:nth-child(5) {
           justify-content: flex-end;
-        }
+        } */
       }
     }
   }
@@ -154,7 +154,7 @@ const items = [
 
   links.forEach((link) => {
     // Split the text content
-    const textElement = link.querySelector('div:nth-child(2)') as HTMLElement;
+    const textElement = link.querySelector('div:nth-child(1)') as HTMLElement;
     if (!textElement) return;
 
     const split = new SplitType(textElement, { types: 'chars' });

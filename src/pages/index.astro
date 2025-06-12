@@ -4,8 +4,9 @@ import HelperMenu from '../components/helper-menu.astro';
 import Hero from '../components/hero.astro';
 import '../styles/reset.css';
 import '../styles/fonts.css';
-import Experience2 from '../components/experience2.astro';
-import Education from '../components/education.astro';
+
+import Separator from '../components/separator.astro';
+import Projects from '../components/projects.astro';
 ---
 
 <html lang="en">
@@ -24,10 +25,9 @@ import Education from '../components/education.astro';
   </head>
   <body>
     <Hero />
-    <HelperMenu />
+    <!-- <Separator /> -->
+    <Projects />
     <Experience />
-
-    <!-- <Experience2 /> -->
-    <Education />
+    <HelperMenu />
   </body>
 </html>

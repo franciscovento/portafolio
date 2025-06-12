@@ -1,0 +1,108 @@
+---
+import ProjectCard, { type CardProjectProps } from './cards/ProjectCard.astro';
+
+const projects: CardProjectProps[] = [
+  {
+    title: 'Certiwise',
+    role: 'Front End Developer',
+    description:
+      'Certiwise is a platform that allows you to create and manage your certifications.',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'NextJs', 'Cypress'],
+    image: '/assets/company-logos/certiwise.svg',
+    link: 'https://certiwise.co',
+    linkText: 'certiwise.co',
+    color: '#fff',
+  },
+  {
+    title: 'Academlo',
+    role: 'Front End Lead',
+    description: 'Academlo is a platform that allows you to learn and improve your skills.',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Next Js', 'Auth0'],
+    image: '/assets/company-logos/academlo.svg',
+    link: 'https://academlo.com',
+    linkText: 'academlo.com',
+    color: '#fff',
+  },
+
+  {
+    title: 'Barbadens',
+    role: 'Full Stack Developer',
+    description: 'Barbadens is a store that sells products to the public',
+    technologies: ['Supabase', 'NextJs', 'PostgresSQL', 'React', 'TypeScript', 'Tailwind CSS'],
+    image: '/assets/company-logos/barbadens.svg',
+    link: 'https://barbadens.com',
+    linkText: 'barbadens.com',
+    color: '#fff',
+  },
+  {
+    title: 'Ancora',
+    role: 'Front End Developer',
+    description: 'Ancora is a company that provides services to the public',
+    technologies: ['Astro', 'React', 'TypeScript', 'Tailwind CSS', 'Netlify'],
+    image: '/assets/company-logos/ancora.png',
+    link: 'https://ancora.com',
+    linkText: 'ancora.com',
+    color: '#fff',
+  },
+  {
+    title: 'Recoco',
+    role: 'Full Stack Developer',
+    description: 'Recoco is a applications for students',
+    technologies: ['Supabase', 'NestJs', 'Node', 'TypeScript', 'Tailwind CSS', 'Next JS'],
+    image: '/assets/company-logos/recoco.svg',
+    link: 'https://recoco.netlify.app/',
+    linkText: 'recoco.com',
+    color: '#fff',
+  },
+
+  {
+    title: 'Sullair DAM',
+    role: 'Front End Developer',
+    description: 'Sullair DAM is a company that provides DAM services to the public',
+    technologies: ['React Query', 'NextJs', 'Tailwind CSS', 'Zustand', 'React Hook Form'],
+    image: '/assets/company-logos/sullair-go.svg',
+    link: 'https://sullair-dam.egodesign.dev',
+    linkText: 'sullairdam.com',
+    color: '#fff',
+  },
+  {
+    title: 'Gran Apple Tours',
+    role: 'Full Stack Developer',
+    description: 'Gran Apple Tours is a company that provides tours to the public',
+    technologies: ['Wordpress', 'Elementor', 'SEO', 'Google Analytics', 'Google Search Console'],
+    image: '/assets/company-logos/granappletours.png',
+    link: 'https://granappletours.com',
+    linkText: 'granappletours.com',
+    color: '#fff',
+  },
+  {
+    title: 'Sullair',
+    role: 'Front End Developer',
+    description: 'Sullair is a company that provides services to the public',
+    technologies: ['Wagtail', 'Html', 'CSS', 'Javascript'],
+    image: '/assets/company-logos/sullair.png',
+    link: 'https://sullair.com',
+    linkText: 'sullair.com',
+    color: '#fff',
+  },
+];
+---
+
+<section class="projects">
+  <div class="app-wrapper">
+    <div class="projects__cards">
+      {projects.map((project) => <ProjectCard {...project} />)}
+    </div>
+  </div>
+</section>
+<style>
+  .projects {
+    padding: 100px 40px;
+
+    .projects__cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 20px;
+    }
+  }
+</style>

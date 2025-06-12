@@ -16,13 +16,18 @@
     <div class="hero__info">
       <div class="hero__link">
         <div class="hero__link-url">
-          <span>See projects</span>
+          <a href="/assets/fran-cv-en.pdf" download>Download CV</a>
           <div class="hero__link-url--border"></div>
         </div>
       </div>
       <div class="hero__linkedin">
         <div class="hero__linkedin-bg"></div>
-        <span class="hero__linkedin-text">Linkedin</span>
+        <a
+          href="https://www.linkedin.com/in/francisco-vento/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hero__linkedin-text">Linkedin</a
+        >
       </div>
     </div>
   </div>
@@ -38,8 +43,8 @@
     background-position: center;
     background-repeat: repeat; */
     padding: 100px 20px;
-
     position: relative;
+
     .hero__content {
       position: relative;
       z-index: 2;
@@ -68,6 +73,8 @@
               font-weight: 400;
               text-transform: uppercase;
               line-height: 0.6;
+
+              text-wrap: nowrap;
             }
           }
         }
