@@ -129,6 +129,7 @@ const uniqueId = Math.random().toString(36).substring(2, 9);
       </div>
 
       <div class="experience__cards">
+        <div class="experience__cards__title">My recent experience</div>
         {
           experience.reverse().map((item) => (
             <div class="experience-item" data-color={item.color}>
@@ -164,6 +165,7 @@ const uniqueId = Math.random().toString(36).substring(2, 9);
       position: relative;
 
       .experience__content {
+        display: none;
         font-family: 'Bebas Neue', sans-serif;
         padding: 0;
         font-size: 40px;
@@ -180,6 +182,11 @@ const uniqueId = Math.random().toString(36).substring(2, 9);
         height: 80vh; /* Reduced height for mobile */
         overflow: hidden;
         order: 1;
+        .experience__cards__title {
+          font-size: 40px;
+          color: white;
+          font-family: 'Bebas Neue', sans-serif;
+        }
 
         .experience-item {
           position: absolute;
@@ -197,7 +204,7 @@ const uniqueId = Math.random().toString(36).substring(2, 9);
       }
     }
 
-    .experience-item:not(:first-child) {
+    .experience-item {
       transform: translateX(100%);
       opacity: 0;
     }
@@ -207,12 +214,16 @@ const uniqueId = Math.random().toString(36).substring(2, 9);
         grid-template-columns: 1fr 1fr;
 
         .experience__content {
+          display: block;
           order: 1;
           padding: 25vh 0;
           font-size: 70px;
         }
 
         .experience__cards {
+          .experience__cards__title {
+            display: none;
+          }
           order: 2;
           height: 100vh; /* Full height for desktop */
         }
@@ -252,7 +263,7 @@ const uniqueId = Math.random().toString(36).substring(2, 9);
     });
 
     // Animate items to different positions
-    tl.to(items.slice(1), {
+    tl.to(items, {
       x: (index) => `${(index + 1) * (isMobile ? 1 : 2)}%`,
       rotate: isMobile ? -1 : -2,
       opacity: 1,
