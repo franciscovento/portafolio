@@ -1,149 +1,100 @@
 ---
-export interface CardProjectProps {
-  title: string;
-  role: string;
-  description: string;
-  technologies: string[];
-  image: string;
-  link: string;
-  color?: string;
-  linkText?: string;
+export interface ProjectCardProps {
+  companyName: string;
+  projectImage: string;
+  companyUrl: string;
 }
 
-interface Props extends CardProjectProps {}
+interface Props extends ProjectCardProps {}
 
-const { title, description, technologies, image, link, role, color, linkText } = Astro.props;
+const { companyName, companyUrl, projectImage } = Astro.props;
 ---
 
 <article class="project-card">
-  <div class="project-card--container">
-    <div class="project-card--front">
-      <div class="project-card--front-image" style={`background-color: ${color}`}>
-        <img src={image} alt={title} />
-      </div>
-      <div class="project-card--front-content">
-        <p class="project-card--front-content-title">{title}</p>
-        <a class="project-card--front-content-link" href={link} target="_blank">{linkText}</a>
-      </div>
-    </div>
-    <div class="project-card--back">
-      <div class="project-card--back-title">{role}</div>
-      <div class="project-card--back-description">
-        {description}
-      </div>
-      <div class="project-card--back-technologies">
-        {technologies.map((technology) => <span>{technology}</span>)}
-      </div>
-    </div>
+  <div class="project-card__header">
+    <p class="project-card__title">{companyName}</p>
+    <a href={companyUrl} target="_blank">
+      <button class="project-card__button">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          data-astro-cid-jcvh2fgv=""
+        >
+          <path
+            d="M18 13V19C18 19.5304 17.7893 20.0391 17.4142 20.4142C17.0391 20.7893 16.5304 21 16 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V8C3 7.46957 3.21071 6.96086 3.58579 6.58579C3.96086 6.21071 4.46957 6 5 6H11"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            data-astro-cid-jcvh2fgv=""></path>
+          <path
+            d="M15 3H21V9"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            data-astro-cid-jcvh2fgv=""></path>
+          <path
+            d="M10 14L21 3"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            data-astro-cid-jcvh2fgv=""></path>
+        </svg>
+      </button>
+    </a>
+  </div>
+  <div class="project-card__images">
+    <img src={projectImage} alt="" />
   </div>
 </article>
+
 <style>
   .project-card {
-    display: block;
-    cursor: pointer;
-    width: 270px;
-    min-height: 370px;
+    border-radius: 1rem;
+    max-width: 900px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    margin: auto;
+    background-color: #212121;
+    color: white;
+    .project-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px;
+      .project-card__title {
+        font-size: 32px;
 
-    transition: all 0.3s ease-in-out;
-    perspective: 1000px;
-    position: relative;
-    .project-card--container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transform-style: preserve-3d;
-      transition: transform 0.6s ease-in-out;
-      &:hover {
-        transform: rotateY(180deg);
+        font-weight: bold;
       }
 
-      .project-card--front,
-      .project-card--back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden; /* Oculta la cara trasera cuando no está de frente */
+      .project-card__button {
+        border: 1px solid white;
+        background-color: transparent;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 2rem;
-        flex-direction: column;
-      }
-
-      .project-card--front {
-        border: 1px solid #212830;
-        box-shadow: 0px 8px 6px -6px rgba(235, 234, 242, 0.58);
-        .project-card--front-image {
-          height: 100%;
-          background-color: #212830;
-          padding: 20px;
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          img {
-            width: 150px;
-            height: auto;
-            object-fit: contain;
-          }
-        }
-        .project-card--front-content {
-          padding: 20px;
-
-          .project-card--front-content-title {
-            text-align: center;
-            font-size: 18px;
-            font-weight: 600;
-          }
-          .project-card--front-content-link {
-            text-align: center;
-            font-size: 12px;
-            color: #222;
-          }
+        padding: 4px 8px;
+        border-radius: 4px;
+        svg {
+          color: white;
+          width: 18px;
         }
       }
-      .project-card--back {
-        border: 1px solid #222;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        transform: rotateY(180deg);
-        align-items: flex-start;
-        gap: 10px;
-        .project-card--back-title {
-          text-align: left;
-          font-size: 16px;
-          font-weight: 600;
-        }
-        .project-card--back-description {
-          text-align: left;
-          font-size: 12px;
-          color: #666;
-          padding-bottom: 10px;
-        }
-        .project-card--back-technologies {
-          display: flex;
-          gap: 10px;
-          flex-wrap: wrap;
-          span {
-            font-size: 11px;
-            border: 1px solid black;
-            padding: 2px 4px;
-          }
-        }
+    }
+
+    .project-card__images {
+      height: 26rem;
+      img {
+        object-fit: cover;
+        object-position: top;
+        height: 100%;
+        width: 100%;
       }
     }
   }
 </style>
-<script>
-  const projectCard = document.querySelectorAll('.project-card');
-
-  projectCard.forEach((card) => {
-    card.addEventListener('click', () => {
-      const link = card.querySelector('.project-card--front-content-link') as HTMLAnchorElement;
-      if (link) {
-        window.open(link.href, '_blank');
-      }
-    });
-  });
-</script>

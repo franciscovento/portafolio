@@ -1,0 +1,116 @@
+---
+import ProjectCard, { type ProjectCardProps } from './cards/ProjectCard.astro';
+
+const projects: ProjectCardProps[] = [
+  {
+    companyName: 'Academlo',
+    companyUrl: 'https://www.academlo.com/',
+    projectImage: '/assets/projects/academlo.png',
+  },
+  {
+    companyName: 'Smart Nest',
+    companyUrl: 'https://smartnestrepair.com/',
+    projectImage: '/assets/projects/smartnest.png',
+  },
+  {
+    companyName: 'Certiwise',
+    companyUrl: 'https://certiwise.co/',
+    projectImage: '/assets/projects/certiwise.png',
+  },
+  {
+    companyName: 'Academlo +',
+    companyUrl: 'https://class-center.academlo.com',
+    projectImage: '/assets/projects/academlo plus.png',
+  },
+  {
+    companyName: 'Barbadens',
+    companyUrl: 'https://app.barbadens.com/create',
+    projectImage: '/assets/projects/barbadens.png',
+  },
+
+  {
+    companyName: 'Recoco',
+    companyUrl: 'https://recoco.netlify.app/uba/carreras/1',
+    projectImage: '/assets/projects/recoco.png',
+  },
+];
+---
+
+<section class="recent-work app-wrapper">
+  <h2 class="recent-work__title">My recent projects</h2>
+  <div class="recent-work--container">
+    {
+      projects.map((item) => {
+        return (
+          <div class="recent-work--item">
+            <ProjectCard {...item} />
+          </div>
+        );
+      })
+    }
+  </div>
+</section>
+<style>
+  .recent-work {
+    height: 100vh;
+    display: flex;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    flex-direction: column;
+    gap: 40px;
+    color: #212121;
+    .recent-work__title {
+      font-size: 40px;
+      font-family: 'Bebas Neue', sans-serif;
+      text-align: center;
+    }
+    .recent-work--container {
+      position: relative;
+      height: 70vh;
+      .recent-work--item {
+        position: absolute;
+
+        inset: 0;
+        opacity: 0;
+
+        transform: translateY(100%);
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .recent-work {
+      .recent-work__title {
+        font-size: 90px;
+      }
+    }
+  }
+</style>
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+  const items = gsap.utils.toArray(`.recent-work--item`) as HTMLElement[];
+
+  const tl = gsap.timeline({
+    defaults: {
+      ease: 'power1.in',
+      scrollTrigger: {
+        trigger: `.recent-work`,
+        pin: `.recent-work`,
+
+        start: 'top top',
+        end: `+=${items.length * 50}%`,
+        scrub: 3,
+      },
+    },
+  });
+
+  tl.to(items, {
+    y: (index) => `${(index + 1) * 4}%`,
+    opacity: 1,
+    stagger: 0.5,
+    rotate: (index) => (index % 2 === 1 ? -1 : 1),
+    // scale: (index) => 1 - (index + 1) * 0.01,
+  });
+</script>
