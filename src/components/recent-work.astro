@@ -1,37 +1,43 @@
 ---
 import ProjectCard, { type ProjectCardProps } from './cards/ProjectCard.astro';
+import academlo from '../assets/projects/academlo.png';
+import smartnest from '../assets/projects/smartnest.png';
+import academloplus from '../assets/projects/academlo plus.png';
+import certiwise from '../assets/projects/certiwise.png';
+import barbadens from '../assets/projects/barbadens.png';
+import recoco from '../assets/projects/recoco.png';
 
 const projects: ProjectCardProps[] = [
   {
     companyName: 'Academlo',
     companyUrl: 'https://www.academlo.com/',
-    projectImage: '/assets/projects/academlo.png',
+    projectImage: academlo,
   },
   {
     companyName: 'Smart Nest',
     companyUrl: 'https://smartnestrepair.com/',
-    projectImage: '/assets/projects/smartnest.png',
+    projectImage: smartnest,
   },
   {
     companyName: 'Certiwise',
     companyUrl: 'https://certiwise.co/',
-    projectImage: '/assets/projects/certiwise.png',
+    projectImage: certiwise,
   },
   {
     companyName: 'Academlo +',
     companyUrl: 'https://class-center.academlo.com',
-    projectImage: '/assets/projects/academlo plus.png',
+    projectImage: academloplus,
   },
   {
     companyName: 'Barbadens',
     companyUrl: 'https://app.barbadens.com/create',
-    projectImage: '/assets/projects/barbadens.png',
+    projectImage: barbadens,
   },
 
   {
     companyName: 'Recoco',
     companyUrl: 'https://recoco.netlify.app/uba/carreras/1',
-    projectImage: '/assets/projects/recoco.png',
+    projectImage: recoco,
   },
 ];
 ---
@@ -52,7 +58,7 @@ const projects: ProjectCardProps[] = [
 </section>
 <style>
   .recent-work {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     padding-top: 100px;
     padding-bottom: 100px;

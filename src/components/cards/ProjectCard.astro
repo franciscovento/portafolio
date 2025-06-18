@@ -1,7 +1,10 @@
 ---
+import Image from 'astro/components/Image.astro';
+import type { ImageFunction } from 'astro:content';
+
 export interface ProjectCardProps {
   companyName: string;
-  projectImage: string;
+  projectImage: ImageMetadata;
   companyUrl: string;
 }
 
@@ -13,7 +16,7 @@ const { companyName, companyUrl, projectImage } = Astro.props;
 <article class="project-card">
   <div class="project-card__header">
     <p class="project-card__title">{companyName}</p>
-    <a href={companyUrl} target="_blank">
+    <a href={companyUrl} target="_blank" rel="noopener">
       <button class="project-card__button">
         <svg
           width="24"
@@ -49,7 +52,8 @@ const { companyName, companyUrl, projectImage } = Astro.props;
     </a>
   </div>
   <div class="project-card__images">
-    <img src={projectImage} alt="" />
+    <Image src={projectImage} width={900} height={420} alt={companyName} />
+    <!-- <img src={projectImage} alt="" /> -->
   </div>
 </article>
 
