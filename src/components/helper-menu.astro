@@ -31,7 +31,7 @@ const items = [
           <div class:list={['helper-menu__item']}>
             <h2 class="helper-menu__title">{item.title}</h2>
 
-            <a href="#" class="helper-menu__link">
+            <a href={item.link} target="_blank" rel="noopener" class="helper-menu__link">
               <div>{item.description}</div>
             </a>
           </div>
@@ -66,11 +66,9 @@ const items = [
         height: 80px;
         font-size: 24px;
         padding: 20px;
-        width: 400px;
-        max-width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        width: 100%;
+        display: block;
+
         transition: all 0.3s ease-in-out;
         position: relative;
         &::after {
