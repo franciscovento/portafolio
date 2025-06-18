@@ -1,8 +1,10 @@
 ---
+import Image from 'astro/components/Image.astro';
+
 export interface ExperienceCardProps {
   company: string;
   companyLink: string;
-  companyLogo: string;
+  companyLogo: ImageMetadata;
   dates: string;
   position: string;
   type: ExperienceCardType;
@@ -33,8 +35,13 @@ const {
 
 <article class="experience-card" data-color={color}>
   <div class="experience-card__header">
-    <img src={companyLogo} alt={company} width="50" height="auto" />
-    <a href={companyLink} target="_blank" rel="noopener noreferrer">
+    <Image src={companyLogo} alt={company} width="50" height="50" />
+    <a
+      href={companyLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Visit ${company} website`}
+    >
       <svg
         width="24"
         height="24"

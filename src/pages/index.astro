@@ -6,9 +6,8 @@ import '../styles/reset.css';
 import '../styles/fonts.css';
 
 import Separator from '../components/separator.astro';
-import Projects from '../components/projects.astro';
+
 import RecentWork from '../components/recent-work.astro';
-import LinkedinButton from '../components/LinkedinButton.astro';
 ---
 
 <html lang="en">
@@ -21,6 +20,15 @@ import LinkedinButton from '../components/LinkedinButton.astro';
     <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
     <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="Full Stack Developer portfolio focused on Frontend development with React, Next.js, Tailwind CSS, and modern animations using GSAP. Explore real-world projects and clean UI design."
+    />
+    <meta
+      name="keywords"
+      content="Francisco Vento, Full Stack Developer, React, Next.js, Tailwind CSS, GSAP"
+    />
+    <meta name="author" content="Francisco Vento" />
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,7 +36,7 @@ import LinkedinButton from '../components/LinkedinButton.astro';
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gidole&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik+Glitch&family=Syne+Mono&display=swap"
       rel="stylesheet"
     />
-    <title>Fran Vento</title>
+    <title>Francisco Vento - Full Stack Developer</title>
   </head>
   <body>
     <div style="position: relative; margin-bottom: -100vh;">
@@ -44,7 +52,6 @@ import LinkedinButton from '../components/LinkedinButton.astro';
     </div>
     <Experience />
     <RecentWork />
-
     <HelperMenu />
   </body>
 </html>

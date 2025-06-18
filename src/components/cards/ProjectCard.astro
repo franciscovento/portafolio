@@ -16,8 +16,8 @@ const { companyName, companyUrl, projectImage } = Astro.props;
 <article class="project-card">
   <div class="project-card__header">
     <p class="project-card__title">{companyName}</p>
-    <a href={companyUrl} target="_blank" rel="noopener">
-      <button class="project-card__button">
+    <a href={companyUrl} target="_blank" rel="noopener" aria-label={`Visit ${companyName} website`}>
+      <div class="project-card__button">
         <svg
           width="24"
           height="24"
@@ -48,7 +48,7 @@ const { companyName, companyUrl, projectImage } = Astro.props;
             stroke-linejoin="round"
             data-astro-cid-jcvh2fgv=""></path>
         </svg>
-      </button>
+      </div>
     </a>
   </div>
   <div class="project-card__images">
