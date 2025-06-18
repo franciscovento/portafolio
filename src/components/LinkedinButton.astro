@@ -1,0 +1,54 @@
+---
+
+---
+
+<div class="linkedin-button">
+  <div class="text-around">Full-Stack-Developer-Contact-in-Linkedin---</div>
+</div>
+
+<style>
+  .linkedin-button {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    position: relative;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .text-around {
+    white-space: pre;
+
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    animation: anim 10s linear infinite;
+    .char {
+      position: absolute;
+      left: 50%;
+      font-size: 16px;
+      transform-origin: 0 100px;
+    }
+  }
+
+  @keyframes anim {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+<script>
+  import gsap from 'gsap';
+  import SplitType from 'split-type';
+
+  const textAround = new SplitType('.text-around', { types: 'chars' });
+  const tl = gsap.timeline();
+  tl.set(textAround.chars, {
+    rotate: (index) => index * 8.3,
+  });
+</script>

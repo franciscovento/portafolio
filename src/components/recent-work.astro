@@ -10,40 +10,40 @@ import sullair from '../assets/projects/sullair.png';
 
 const projects: ProjectCardProps[] = [
   {
-    companyName: 'Academlo',
+    companyName: 'Academlo - Frontend Lead',
     companyUrl: 'https://www.academlo.com/',
     projectImage: academlo,
   },
   {
-    companyName: 'Smart Nest',
+    companyName: 'Smart Nest - Frontend Developer',
     companyUrl: 'https://smartnestrepair.com/',
     projectImage: smartnest,
   },
   {
-    companyName: 'Certiwise',
+    companyName: 'Certiwise - Frontend Lead',
     companyUrl: 'https://certiwise.co/',
     projectImage: certiwise,
   },
-  // {
-  //   companyName: 'Academlo +',
-  //   companyUrl: 'https://class-center.academlo.com',
-  //   projectImage: academloplus,
-  // },
   {
-    companyName: 'Barbadens',
+    companyName: 'Barbadens - Full Stack Developer',
     companyUrl: 'https://app.barbadens.com/create',
     projectImage: barbadens,
   },
 
   {
-    companyName: 'Recoco',
+    companyName: 'Recoco - Full Stack Developer',
     companyUrl: 'https://recoco.netlify.app/uba/carreras/1',
     projectImage: recoco,
   },
   {
-    companyName: 'Sullair',
+    companyName: 'Sullair - Frontend Developer',
     companyUrl: 'https://sullair-dam.egodesign.dev/dashboard',
     projectImage: sullair,
+  },
+  {
+    companyName: 'Academlo +',
+    companyUrl: 'https://class-center.academlo.com',
+    projectImage: academloplus,
   },
 ];
 ---
@@ -120,7 +120,7 @@ const projects: ProjectCardProps[] = [
 
   tl.to(items, {
     y: (index) => `${(index + 1) * 2}%`,
-    opacity: 1,
+    opacity: (index) => (index === items.length - 1 ? 0 : 1),
     stagger: 1,
     rotate: (index) => (index % 2 === 1 ? -1 : 1),
     // scale: (index) => 1 - (index + 1) * 0.01,
