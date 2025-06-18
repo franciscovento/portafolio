@@ -6,6 +6,7 @@ import academloplus from '../assets/projects/academlo plus.png';
 import certiwise from '../assets/projects/certiwise.png';
 import barbadens from '../assets/projects/barbadens.png';
 import recoco from '../assets/projects/recoco.png';
+import sullair from '../assets/projects/sullair.png';
 
 const projects: ProjectCardProps[] = [
   {
@@ -23,11 +24,11 @@ const projects: ProjectCardProps[] = [
     companyUrl: 'https://certiwise.co/',
     projectImage: certiwise,
   },
-  {
-    companyName: 'Academlo +',
-    companyUrl: 'https://class-center.academlo.com',
-    projectImage: academloplus,
-  },
+  // {
+  //   companyName: 'Academlo +',
+  //   companyUrl: 'https://class-center.academlo.com',
+  //   projectImage: academloplus,
+  // },
   {
     companyName: 'Barbadens',
     companyUrl: 'https://app.barbadens.com/create',
@@ -38,6 +39,11 @@ const projects: ProjectCardProps[] = [
     companyName: 'Recoco',
     companyUrl: 'https://recoco.netlify.app/uba/carreras/1',
     projectImage: recoco,
+  },
+  {
+    companyName: 'Sullair',
+    companyUrl: 'https://sullair-dam.egodesign.dev/dashboard',
+    projectImage: sullair,
   },
 ];
 ---
@@ -104,19 +110,20 @@ const projects: ProjectCardProps[] = [
       scrollTrigger: {
         trigger: `.recent-work`,
         pin: `.recent-work`,
-
         start: 'top top',
-        end: `+=${items.length * 50}%`,
+        end: `+=${items.length * 80}%`,
         scrub: 3,
+        invalidateOnRefresh: true,
       },
     },
   });
 
   tl.to(items, {
-    y: (index) => `${(index + 1) * 4}%`,
+    y: (index) => `${(index + 1) * 2}%`,
     opacity: 1,
-    stagger: 0.5,
+    stagger: 1,
     rotate: (index) => (index % 2 === 1 ? -1 : 1),
     // scale: (index) => 1 - (index + 1) * 0.01,
   });
+  // tl.set({}, {}, '+=1');
 </script>
