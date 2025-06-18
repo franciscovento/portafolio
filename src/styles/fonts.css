@@ -1,65 +1,28 @@
 /* JetBrains Mono Font Configuration */
+
+/* Bebas Neue */
 @font-face {
-  font-family: 'JetBrains Mono';
-  src: url('/fonts/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-family: 'Bebas Neue';
+  src: url('/fonts/Bebas_Neue/BebasNeue-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
+/* Gidole */
 @font-face {
-  font-family: 'JetBrains Mono';
-  src: url('/fonts/fonts/webfonts/JetBrainsMono-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'JetBrains Mono';
-  src: url('/fonts/fonts/webfonts/JetBrainsMono-Italic.woff2') format('woff2');
+  font-family: 'Gidole';
+  src: url('/fonts/Gidole/Gidole-Regular.ttf') format('truetype');
   font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'JetBrains Mono';
-  src: url('/fonts/fonts/webfonts/JetBrainsMono-BoldItalic.woff2') format('woff2');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'JetBrains Mono';
-  src: url('/fonts/fonts/webfonts/JetBrainsMono-Light.woff2') format('woff2');
-  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
+/* Rubik Glitch */
 @font-face {
-  font-family: 'JetBrains Mono';
-  src: url('/fonts/fonts/webfonts/JetBrainsMono-Medium.woff2') format('woff2');
-  font-weight: 500;
+  font-family: 'Rubik Glitch';
+  src: url('/fonts/Rubik_Glitch/RubikGlitch-Regular.ttf') format('truetype');
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
-
-/* Variable font configuration */
-@font-face {
-  font-family: 'JetBrains Mono Variable';
-  src: url('/fonts/fonts/variable/JetBrainsMono[wght].ttf') format('truetype-variations');
-  font-weight: 100 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'JetBrains Mono Variable';
-  src: url('/fonts/fonts/variable/JetBrainsMono-Italic[wght].ttf') format('truetype-variations');
-  font-weight: 100 800;
-  font-style: italic;
-  font-display: swap;
-} 
